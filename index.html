@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dondinho · Linha do tempo · Pai do Pelé</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f9f7f2;
+            color: #1e1e2a;
+            line-height: 1.5;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .hero {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: #1e3c3c;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero .subtitle {
+            font-size: 1.2rem;
+            color: #4a5e5e;
+            font-weight: 400;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .hero .subtitle i {
+            color: #b76e4b;
+        }
+
+        .source-badge {
+            background: #e7e3da;
+            border-radius: 100px;
+            padding: 0.35rem 1rem;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: #3e4e4e;
+            display: inline-block;
+            margin-top: 1.2rem;
+            border: 1px solid #d6cec0;
+            letter-spacing: 0.01em;
+        }
+
+        .timeline {
+            position: relative;
+            padding: 1rem 0 1rem 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 10px;
+            top: 20px;
+            bottom: 20px;
+            width: 3px;
+            background: linear-gradient(to bottom, #b76e4b, #8a9c9c, #b76e4b);
+            border-radius: 3px;
+        }
+
+        .decade {
+            margin-bottom: 2.8rem;
+            position: relative;
+        }
+
+        .decade-header {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1e3c3c;
+            margin-bottom: 1.5rem;
+            margin-left: 0.2rem;
+        }
+
+        .decade-header i {
+            background: #ffffff;
+            border-radius: 50%;
+            width: 38px;
+            height: 38px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: #b76e4b;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            border: 1px solid #d6cec0;
+        }
+
+        .event-card {
+            background: #ffffff;
+            border-radius: 18px;
+            padding: 1.2rem 1.4rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.03), 0 1px 4px rgba(0, 0, 0, 0.02);
+            border: 1px solid #ece7e0;
+            transition: transform 0.15s ease, box-shadow 0.2s ease;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-start;
+            gap: 0.75rem 1rem;
+            position: relative;
+            margin-left: 1.8rem;
+        }
+
+        .event-card:hover {
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.04), 0 2px 8px rgba(0, 0, 0, 0.02);
+            border-color: #cfc6b8;
+            transform: translateY(-2px);
+        }
+
+        .event-date {
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: #b76e4b;
+            background: #fdf5ef;
+            padding: 0.25rem 0.9rem;
+            border-radius: 100px;
+            display: inline-block;
+            letter-spacing: 0.02em;
+            border: 1px solid #eadacf;
+            white-space: nowrap;
+        }
+
+        .event-desc {
+            flex: 1;
+            font-size: 1rem;
+            color: #2a3636;
+            font-weight: 400;
+        }
+
+        .event-desc strong {
+            color: #1e3c3c;
+            font-weight: 600;
+        }
+
+        .event-desc .emoji {
+            font-size: 1.1rem;
+            margin-right: 0.2rem;
+        }
+
+        .event-source {
+            display: block;
+            font-size: 0.75rem;
+            color: #7a8c8c;
+            margin-top: 0.4rem;
+            font-style: italic;
+            border-left: 2px solid #d6cec0;
+            padding-left: 0.7rem;
+        }
+
+        .event-source i {
+            margin-right: 0.2rem;
+            font-size: 0.7rem;
+            color: #b76e4b;
+        }
+
+        .footer-note {
+            margin-top: 4rem;
+            padding: 1.8rem 1.5rem;
+            background: #eae5dc;
+            border-radius: 24px;
+            color: #1e2e2e;
+            font-size: 0.85rem;
+            border: 1px solid #dad2c6;
+        }
+
+        .footer-note p {
+            margin-bottom: 0.6rem;
+        }
+
+        .footer-note a {
+            color: #8a5a3e;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px dotted #8a5a3e;
+        }
+
+        .footer-note a:hover {
+            color: #1e3c3c;
+            border-bottom-color: #1e3c3c;
+        }
+
+        /* ===== MAPA E SELETOR ===== */
+        .map-section {
+            margin: 2.5rem 0 1rem 0;
+            background: #ffffff;
+            border-radius: 24px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+            border: 1px solid #ece7e0;
+            overflow: hidden;
+        }
+
+        .map-selector {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.2rem 1.5rem;
+            background: #fdfaf7;
+            border-bottom: 1px solid #ece7e0;
+        }
+
+        .map-selector label {
+            font-weight: 600;
+            color: #1e3c3c;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            white-space: nowrap;
+        }
+
+        .map-selector label i {
+            color: #b76e4b;
+            font-size: 1.1rem;
+        }
+
+        .city-select {
+            flex: 1;
+            min-width: 220px;
+            max-width: 380px;
+            padding: 0.7rem 1rem;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            color: #1e3c3c;
+            background: #ffffff;
+            border: 1.5px solid #d6cec0;
+            border-radius: 12px;
+            cursor: pointer;
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23b76e4b' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            padding-right: 2.5rem;
+        }
+
+        .city-select:hover {
+            border-color: #b76e4b;
+        }
+
+        .city-select:focus {
+            border-color: #b76e4b;
+            box-shadow: 0 0 0 3px rgba(183, 110, 75, 0.15);
+        }
+
+        .city-info {
+            font-size: 0.85rem;
+            color: #6a7c7c;
+            margin-left: auto;
+            font-style: italic;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .city-info i {
+            color: #b76e4b;
+            font-size: 0.8rem;
+        }
+
+        .map-wrapper {
+            position: relative;
+            width: 100%;
+            height: 340px;
+            background: #eae5dc;
+        }
+
+        .map-wrapper iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            display: block;
+        }
+
+        .map-caption {
+            background: #ffffff;
+            padding: 0.75rem 1.2rem;
+            font-size: 0.8rem;
+            color: #5a6a6a;
+            text-align: center;
+            border-top: 1px solid #ece7e0;
+        }
+
+        .map-caption i {
+            margin-right: 6px;
+            color: #b76e4b;
+        }
+
+        /* small screens */
+        @media (max-width: 600px) {
+            body { padding: 1.2rem 0.75rem; }
+            .hero h1 { font-size: 2rem; }
+            .timeline { padding-left: 0.5rem; }
+            .timeline::before { left: 4px; }
+            .event-card { margin-left: 0.8rem; padding: 1rem; }
+            .decade-header { font-size: 1.25rem; margin-left: 0; }
+            .decade-header i { width: 32px; height: 32px; font-size: 1rem; }
+            .event-date { font-size: 0.8rem; padding: 0.2rem 0.7rem; white-space: normal; }
+            .event-desc { font-size: 0.9rem; }
+            .map-wrapper { height: 240px; }
+            .map-selector { flex-direction: column; align-items: stretch; gap: 0.6rem; padding: 1rem; }
+            .city-select { max-width: 100%; }
+            .city-info { margin-left: 0; }
+        }
+
+        .gold-accent {
+            color: #b76e4b;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Hero -->
+        <div class="hero">
+            <h1>Dondinho</h1>
+            <div class="subtitle">
+                <i class="fas fa-futbol"></i> João Ramos do Nascimento
+                <span style="color:#b0a89c;">·</span> 1917 – 1996
+                <i class="fas fa-futbol"></i>
+            </div>
+            <div class="source-badge">
+                <i class="fas fa-book-open" style="margin-right:6px;"></i> Linha do tempo baseada em fontes históricas
+            </div>
+        </div>
+
+        <!-- Timeline -->
+        <div class="timeline">
+            <!-- DÉCADA 1910 -->
+            <div class="decade">
+                <div class="decade-header">
+                    <i class="fas fa-baby"></i> Década de 1910 · nascimento e primeiros anos
+                </div>
+                <div class="event-card">
+                    <span class="event-date">02/10/1917</span>
+                    <div class="event-desc">Nasce João Ramos do Nascimento (Dondinho) em Campos Gerais/MG.</div>
+                </div>
+                <div class="event-card">
+                    <span class="event-date">13/11/1917</span>
+                    <div class="event-desc">É batizado em Campos Gerais/MG.</div>
+                </div>
+            </div>
+
+            <!-- DÉCADA 1930 -->
+            <div class="decade">
+                <div class="decade-header">
+                    <i class="fas fa-futbol"></i> Década de 1930 · Serviço militar, casamento e início no futebol
+                </div>
+                <div class="event-card">
+                    <span class="event-date">1934 ou 1935</span>
+                    <div class="event-desc">Alista-se no Exército e muda-se para Três Corações/MG, para servir no 4º Regimento de Cavalaria Divisionária (4º RCD), unidade que mais tarde daria origem à Escola de Sargentos das Armas (ESA).</div>
+                </div>
+                <div class="event-card">
+                    <span class="event-date">07/11/1938</span>
+                    <div class="event-desc">Atuação em campo pelo Combinado TC (misto do Atlético F.C e do 4º RCD), que perde por 1 x 0 para o Palestra Itália BH (atual Cruzeiro). <span class="event-source"><i class="fas fa-newspaper"></i> “O Jornal”</span></div>
+                </div>
+                <div class="event-card">
+                    <span class="event-date">15/07/1939</span>
+                    <div class="event-desc">Grande atuação pela camisa do ACTC (Atlético Clube Três Corações). O ACTC vence a Associação Athlética Nacional de Caxambu por 6 a 3, com <strong>Dondinho marcando 5 gols</strong>.</div>
+                </div>
+                <div class="event-card">
+                    <span class="event-date">29/07/1939</span>
+                    <div class="event-desc">💍 <strong>Casamento</strong> com Celeste Arantes em Três Corações/MG.</div>
+                </div>
+                <div class="event-card">
+                    <span class="event-date">02/08/1939</span>
+                    <div class="event-desc">O ACTC vence Elói Mendes por 6 a 0.</div>
+                </div>
+                <div class="event-card">
+                    <span class="event-date">20/08/1939</span>
+                    <div class="event-desc">O ACTC vence Alfenas por 5 a 2. <span class="event-source"><i class="fas fa-newspaper"></i> “O Jornal”</span></div>
+                </div>
+                <div class="event-card">
+                    <span class="event-date">23/11/1939</span>
+                    <div class="event-desc">O ACTC vence Elói Mendes por 5 a 2, com <strong>Dondinho marcando 5 gols</strong>. <span class="event-source"><i class="fas fa-newspaper"></i> “O Jornal”</span></div>
+                </div>
+                <div class="event-card">
+                    <span class="event-date">12/1939</span>
+                    <div class="event-desc">Jogo entre Yuracan de Itajubá e Smart (6 x 2), quando <strong>Dondinho faz 5 gols de cabeça</strong>. <span class="event-source"><i class="fab fa-facebook"></i> Página oficial do Yuracan no Facebook, 26/12/2024</span></div>
+                </div>
+            </div>
+
+            <!-- DÉCADA 1940 -->
+            <div class="decade">
+                <div class="decade-header">
+                    <i class="fas fa-trophy"></i> Década de 1940 · consagração, interesse de grandes clubes e novos rumos
+                </div>
+                <div class="event-card">
+                    <span class="event-date">07/04/1940</span>
+                    <div class="event-desc">Empate de 1 x 1 entre CAM e São Christovão. <span class="event-source"><i class="fas fa-newspaper"></i> “Jornal dos Sportes”</span></div>
+                </div>
+                <div class="event-card">
+                    <span class="event-date">05/05/1940</span>
+                    <div class="event-desc">O ACTC vence Campanha por 2 a 0. <span class="event-source"><i class="fas fa-newspaper"></i> “Jornal dos Sportes”</span></div>
+                </div>
+                <div class="event-card">
+                    <span class="event-date">29/12/1940</span>
+                    <div class="event-desc">O jornal noticia o possível interesse do <strong>Flamengo</strong> pela contratação de Dondinho.</div>
+                </div>
+                <div class="event-card">
+                    <span class="event-date">30/03/1941</span>
+                    <div class="event-desc">Inauguração do Estádio General Affonseca, em Lorena/SP, com a vitória do Fluminense (RJ) por 5 a 0 sobre o Heparé. <span class="event-source"><i class="fas fa-newspaper"></i> “Histórias do Futebol”</span></div>
+                </div>
+                <div class="event-card">
+                    <span class="event-date">07/1941</span>
+                    <div class="event-desc">A Fábrica de Armas de Itajubá perde para o Vasco da Gama por 4 a 2. <span class="event-source"><i class="fas fa-newspaper"></i> “Terceiro Tempo” – Milton Neves</span></div>
+                </div>
+                <div class="event-card">
+                    <span class="event-date">04/07/1943</span>
+                    <div class="event-desc">Dondinho joga pelo ACTC no empate de 1 x 1 contra o Vasco de São Lourenço (Vasco SL).</div>
+                </div>
+                <div class="event-card">
+                    <span class="event-date">15/07/1943</span>
+                    <div class="event-desc">🚚 <strong>Mudança de cidade:</strong> Transfere-se para São Lourenço para jogar pelo Vasco São Lourenço.</div>
+                </div>
+                <div class="event-card">
+                    <span class="event-date">04/09/1943</span>
+                    <div class="event-desc">Exibição de luxo pelo Vasco SL na goleada de 8 a 0 sobre o Lambari, com <strong>Dondinho marcando 4 gols</strong>.</div>
+                </div>
+                <div class="event-card">
+                    <span class="event-date">1945</span>
+                    <div class="event-desc">Jogando pela Caldense, Dondinho marca 3 gols na vitória de 3 x 2 contra São José do Rio Pardo. <span class="event-source"><i class="fas fa-newspaper"></i> Página oficial da Caldense</span></div>
+                </div>
+                <div class="event-card">
+                    <span class="event-date">08/1945</span>
+                    <div class="event-desc">🚚 <strong>Nova transferência:</strong> Dondinho vai jogar no Bauru.</div>
+                </div>
+                <div class="event-card">
+                    <span class="event-date">1946</span>
+                    <div class="event-desc">🏆 <strong>Título:</strong> O Bauru sagra-se campeão do interior paulista. <span class="event-source"><i class="fas fa-newspaper"></i> “Terceiro Tempo” – Milton Neves</span></div>
+                </div>
+            </div>
+
+            <!-- FALECIMENTO -->
+            <div class="decade">
+                <div class="decade-header">
+                    <i class="fas fa-heart"></i> Falecimento
+                </div>
+                <div class="event-card">
+                    <span class="event-date">16/11/1996</span>
+                    <div class="event-desc">Falece em Santos, aos 79 anos, de insuficiência cardíaca.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- MAPA COM SELETOR DE CIDADES -->
+        <div class="map-section">
+            <div class="map-selector">
+                <label for="citySelect"><i class="fas fa-map-pin"></i> Escolha uma cidade:</label>
+                <select id="citySelect" class="city-select" aria-label="Selecione uma cidade para visualizar no mapa">
+                    <option value="campos-gerais" selected>Campos Gerais/MG (nascimento)</option>
+                    <option value="tres-coracoes">Três Corações/MG (Exército, casamento, ACTC)</option>
+                    <option value="itajuba">Itajubá/MG (Yuracan, Fábrica de Armas)</option>
+                    <option value="sao-lourenco">São Lourenço/MG (Vasco SL)</option>
+                    <option value="pocos-de-caldas">Poços de Caldas/MG (Caldense)</option>
+                    <option value="bauru">Bauru/SP (campeão do interior)</option>
+                    <option value="santos">Santos/SP (falecimento)</option>
+                </select>
+                <span class="city-info"><i class="fas fa-mouse-pointer"></i> O mapa dá zoom na cidade</span>
+            </div>
+            <div class="map-wrapper">
+                <iframe 
+                    id="mapFrame"
+                    src="https://www.google.com/maps?q=Campos+Gerais,+MG&output=embed&z=12"
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+            <div class="map-caption" id="mapCaption">
+                <i class="fas fa-map-pin"></i> Campos Gerais, Minas Gerais – terra natal de Dondinho
+            </div>
+        </div>
+
+        <!-- CRÉDITOS E FONTES -->
+        <div class="footer-note">
+            <p><i class="fas fa-copyright" style="margin-right: 6px; color: #b76e4b;"></i> <strong>Fontes e direitos autorais</strong></p>
+            <p>Este material é detentor do direito autoral, patrimonial e moral, com base na Lei n. 9.610 de 1998 e artigo 5°, inciso XXIX, da Constituição de 1988. Uso indevido está sujeito a indenizações. Para reproduzi-lo entre em contato pelo email <a href="mailto:dapress@dabr.com.br">dapress@dabr.com.br</a>.</p>
+            <p style="margin-top: 0.8rem; font-size: 0.8rem; color: #4e5e5e;">
+                <i class="fas fa-link"></i> Fontes consultadas: 
+                <a href="http://memoria.bn.gov.br/DocReader/110523_03/47899" target="_blank">Palestra Itália leva a melhor</a> · 
+                <a href="http://memoria.bn.gov.br/DocReader/110523_03/51993" target="_blank">Dondinho faz 5 gols contra a Associação Athlética de Caxambu</a> · 
+                <a href="http://memoria.bn.gov.br/DocReader/110523_03/52303" target="_blank">ACTC vence o combinado Eloyense</a> · 
+                <a href="http://memoria.bn.gov.br/DocReader/110523_03/52603" target="_blank">ACTC vence o scratch de Alfenas</a> · 
+                <a href="http://memoria.bn.gov.br/DocReader/110523_03/53875" target="_blank">ACTC vence novamente o scratch de Eloy Mendes</a> · 
+                <a href="https://caldense.com.br/2023/01/03/dondinho-pai-de-pele-atuou-pela-caldense-em-1945/" target="_blank">Dondinho atuou pela Caldense</a> · 
+                <a href="https://ge.globo.com/bau-do-esporte/noticia/2012/10/historias-incriveis-dondinho-pai-de-pele-fez-5-gols-de-cabeca-num-jogo.html" target="_blank">Dondinho cabeceava como ninguém</a> · 
+                <a href="https://ge.globo.com/futebol/times/atletico-mg/noticia/ha-80-anos-dondinho-pai-de-pele-atuava-pelo-atletico-mg-lesao-fechou-porta-da-fama.ghtml" target="_blank">Acidente de trabalho</a> · 
+                <a href="http://memoria.bn.gov.br/DocReader/089842_05/1145" target="_blank">ACM x São Christovão</a> · 
+                <a href="http://memoria.bn.gov.br/DocReader/089842_07/94392" target="_blank">Dondinho, craque do Vasco de São Lourenço (1968)</a> · 
+                <a href="http://memoria.bn.gov.br/DocReader/089842_07/105231" target="_blank">Por onde Dondinho passou (1969)</a> · 
+                <a href="https://www1.folha.uol.com.br/fsp/1996/11/17/brasil/10.html" target="_blank">Falecimento (1996)</a>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        (function() {
+            // Dados das cidades: consulta para o Google Maps embed, legenda do mapa e zoom
+            const cidades = {
+                'campos-gerais': {
+                    query: 'Campos+Gerais,+MG',
+                    legenda: 'Campos Gerais, Minas Gerais – terra natal de Dondinho',
+                    zoom: 12
+                },
+                'tres-coracoes': {
+                    query: 'Três+Corações,+MG',
+                    legenda: 'Três Corações, Minas Gerais – Exército, casamento e início no ACTC',
+                    zoom: 12
+                },
+                'itajuba': {
+                    query: 'Itajubá,+MG',
+                    legenda: 'Itajubá, Minas Gerais – Yuracan e Fábrica de Armas',
+                    zoom: 12
+                },
+                'sao-lourenco': {
+                    query: 'São+Lourenço,+MG',
+                    legenda: 'São Lourenço, Minas Gerais – Vasco São Lourenço',
+                    zoom: 12
+                },
+                'pocos-de-caldas': {
+                    query: 'Poços+de+Caldas,+MG',
+                    legenda: 'Poços de Caldas, Minas Gerais – Caldense',
+                    zoom: 12
+                },
+                'bauru': {
+                    query: 'Bauru,+SP',
+                    legenda: 'Bauru, São Paulo – campeão do interior paulista em 1946',
+                    zoom: 12
+                },
+                'santos': {
+                    query: 'Santos,+SP',
+                    legenda: 'Santos, São Paulo – falecimento em 1996',
+                    zoom: 12
+                }
+            };
+
+            const select = document.getElementById('citySelect');
+            const mapFrame = document.getElementById('mapFrame');
+            const mapCaption = document.getElementById('mapCaption');
+
+            function atualizarMapa(cidadeKey) {
+                const cidade = cidades[cidadeKey];
+                if (!cidade) return;
+
+                // Atualiza o iframe do Google Maps com a nova consulta e zoom
+                const src = `https://www.google.com/maps?q=${cidade.query}&output=embed&z=${cidade.zoom}`;
+                mapFrame.src = src;
+
+                // Atualiza a legenda
+                mapCaption.innerHTML = `<i class="fas fa-map-pin"></i> ${cidade.legenda}`;
+            }
+
+            // Evento de mudança da caixa de seleção
+            select.addEventListener('change', function() {
+                atualizarMapa(this.value);
+            });
+
+            // Inicializa com a cidade padrão (Campos Gerais) — já está no HTML, mas garante consistência
+            // (o iframe já carrega Campos Gerais por padrão no src)
+        })();
+    </script>
+</body>
+</html>
