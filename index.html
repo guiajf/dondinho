@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="[Seu nome completo]">
+    <meta name="description" content="Linha do tempo documentada da carreira de Dondinho, pai do Pelé, com base em jornais da época.
+    Pesquisa de Guilherme Ferreira. Código desenvolvido com assistência de IA.">
     <title>Dondinho · Linha do tempo · Pai do Pelé</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -67,6 +70,32 @@
             margin-top: 1.2rem;
             border: 1px solid #d6cec0;
             letter-spacing: 0.01em;
+        }
+
+        .author-credit-top {
+            margin-top: 0.9rem;
+            font-size: 0.8rem;
+            color: #6a7c7c;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.35rem;
+            flex-wrap: wrap;
+        }
+        
+        .author-credit-top i {
+            color: #b76e4b;
+            font-size: 0.75rem;
+        }
+        
+        .author-credit-top strong {
+            color: #1e3c3c;
+            font-weight: 600;
+        }
+        
+        .author-credit-top .sep {
+            color: #c4bab0;
+            margin: 0 0.1rem;
         }
 
         .timeline {
@@ -206,6 +235,38 @@
         }
 
         .footer-note a:hover {
+            color: #1e3c3c;
+            border-bottom-color: #1e3c3c;
+        }
+
+        .author-block {
+            margin-bottom: 1.2rem;
+            padding-bottom: 1.2rem;
+            border-bottom: 1px solid #d6cec0;
+        }
+        
+        .author-block p {
+            margin-bottom: 0.5rem;
+            line-height: 1.55;
+        }
+        
+        .author-block strong {
+            color: #1e3c3c;
+        }
+        
+        .author-block .contact-line {
+            margin-top: 0.6rem;
+            margin-bottom: 0;
+        }
+        
+        .author-block .contact-line a {
+            color: #8a5a3e;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px dotted #8a5a3e;
+        }
+        
+        .author-block .contact-line a:hover {
             color: #1e3c3c;
             border-bottom-color: #1e3c3c;
         }
@@ -352,6 +413,10 @@
             </div>
             <div class="source-badge">
                 <i class="fas fa-book-open" style="margin-right:6px;"></i> Linha do tempo baseada em fontes históricas
+            </div>
+            <div class="author-credit-top">
+                <i class="fas fa-pen-fancy"></i>Pesquisa e curadoria: <strong>Guilherme Ferreira</strong>
+                <span class="sep">·</span>Código desenvolvido com assistência de IA
             </div>
         </div>
 
@@ -522,6 +587,22 @@
                 <a href="http://memoria.bn.gov.br/DocReader/089842_07/105231" target="_blank">Por onde Dondinho passou (1969)</a> · 
                 <a href="https://www1.folha.uol.com.br/fsp/1996/11/17/brasil/10.html" target="_blank">Falecimento (1996)</a>
             </p>
+            <div class="author-block">
+            <p><i class="fas fa-user-pen" style="margin-right: 6px; color: #b76e4b;"></i> <strong>Sobre esta pesquisa</strong></p>
+            <p>
+                Pesquisa, curadoria e redação da linha do tempo: <strong>[Seu nome completo]</strong>.
+                A cronologia foi reconstruída a partir de jornais e publicações da época, cujas fontes estão listadas abaixo.
+            </p>
+            <p>
+                O <strong>código-fonte deste site foi desenvolvido com assistência de inteligência artificial</strong>,
+                a partir da pesquisa e das diretrizes definidas pelo autor. A IA foi utilizada como ferramenta de
+                implementação; a seleção, verificação e interpretação do conteúdo histórico são de responsabilidade do autor.
+            </p>
+            <p class="contact-line">
+                <i class="fas fa-envelope" style="margin-right: 6px; color: #b76e4b;"></i>
+                Contato: <a href="mailto:[seu-email]">[seu-email]</a>
+            </p>
+        </div>
         </div>
     </div>
 
